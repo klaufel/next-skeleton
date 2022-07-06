@@ -1,5 +1,10 @@
 import styles from './button.module.css'
 
-export default function Button({ children, href, ...props}) {
-    return <a className={styles.button} href={href} {...props}>e fef e fe fefefefefefeflkjfefeklfefefe fe fe fe fe {children}</a>
+type ButtonProps = {
+  children: React.ReactNode;
+  href: string,
+}
+
+export default function Button({ children, href, ...props}: ButtonProps) {
+  return <a className={styles.button} href={href} {...props}>{children}</a>
 }
