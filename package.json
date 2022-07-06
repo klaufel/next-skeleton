@@ -2,6 +2,10 @@
   "name": "next-skeleton",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "components",
+    "literals"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +14,8 @@
     "phoenix": "rm -rf node_modules pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
+    "@clv/components": "workspace:*",
+    "@clv/literals": "workspace:*",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
