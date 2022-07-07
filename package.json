@@ -16,6 +16,7 @@
     "start": "next start",
     "lint": "next lint",
     "components:generate": "clv-components",
+    "test:literals": "node literals/bin/literals-check.js",
     "phoenix": "pnpm -r exec -- pnpm dlx rimraf node_modules && pnpm dlx rimraf node_modules pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
