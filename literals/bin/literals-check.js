@@ -56,12 +56,15 @@ const dictionarylocales = Object.keys(dictionaries);
 
 const baseDictionaryKeys = Object.keys(dictionaries[DEFAULT_LOCALE]);
 
-const dictionaryLength = baseDictionaryKeys?.length;
-
 const totalDictionaryKeys = dictionarylocales.map((locale) => ({
   locale,
   value: Object.keys(dictionaries[locale])?.length,
 }));
+
+const totalDictionarySizeKeys = Object.values(totalDictionaryKeys).reduce(
+  (prev, { value }) => prev + value,
+  0
+);
 
 const dictionarySizeInfo = Object.values(totalDictionaryKeys)
   .map(({ locale, value }) => `'${locale}': ${value} keys`)
@@ -91,14 +94,10 @@ if (!areConsistents) {
   );
   process.exit(-1);
 } else {
+  console.log("\x1b[32m%s\x1b[0m", "info ", `- Dictionaries are consistent!`);
   console.log(
     "\x1b[32m%s\x1b[0m",
     "info ",
-    `- Analized ${dictionaryLength} keys in default locale '${DEFAULT_LOCALE}'.`
-  );
-  console.log(
-    "\x1b[32m%s\x1b[0m",
-    "info ",
-    `- Dictionary size: ${dictionarySizeInfo}.\n`
+    `- Dictionaries have a total of ${totalDictionarySizeKeys} keys. Locales ${dictionarySizeInfo}.\n`
   );
 }
