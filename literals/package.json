@@ -1,6 +1,5 @@
 {
-    "name": "@clv/literals",
-    "version": "0.1.0",
-    "private": true
-  }
-  
+  "name": "@clv/literals",
+  "version": "0.1.0",
+  "private": true
+}
