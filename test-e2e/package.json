@@ -1,0 +1,13 @@
+{
+  "name": "@clv/test-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:e2e:open": "pnpm cypress open --config video=false",
+    "test:e2e:ci": "pnpm cypress run --config video=false"
+  },
+  "devDependencies": {
+    "cypress": "10.3.0"
+  }
+}
