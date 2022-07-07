@@ -1,5 +1,12 @@
 {
   "name": "@clv/components",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "type": "module",
+  "bin": {
+    "clv-components": "node bin/generate-component.js"
+  },
+  "devDependencies": {
+    "@testing-library/react": "13.3.0"
+  }
 }

@@ -2,6 +2,10 @@
   "name": "next-skeleton",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
   "workspaces": [
     "components",
     "literals"
@@ -11,7 +15,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "phoenix": "rm -rf node_modules pnpm-lock.yaml && pnpm install"
+    "components:generate": "clv-components",
+    "phoenix": "pnpm -r exec -- pnpm dlx rimraf node_modules && pnpm dlx rimraf node_modules pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
     "@clv/components": "workspace:*",
@@ -21,11 +26,16 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "18.0.2",
+    "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
     "typescript": "4.7.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["react", "react-dom"]
+    }
   }
 }

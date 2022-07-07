@@ -6,5 +6,5 @@ type ButtonProps = {
 }
 
 export default function Button({ children, href, ...props}: ButtonProps) {
-  return <a className={styles.button} href={href} {...props}>{children}</a>
+  return <a className={styles.button} href={href} {...props}>{children} →</a>
 }
