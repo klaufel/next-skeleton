@@ -11,21 +11,15 @@ type %{componentNameCapitalized}Props = {
   children?: React.ReactNode
 }
 
-import styles from './modal.module.css'
-
-type ModalProps = {
-  children?: React.ReactNode
-}
-
 export default function %{componentNameCapitalized}({ children, ...props }: %{componentNameCapitalized}Props) {
   return (
-    <div className={styles.%{componentNameCapitalized}} {...props}>
+    <div className={styles.%{componentName}} {...props}>
       {children}
     </div>
   )
 }\n`
 
-const templateCSS = `.%{componentNameCapitalized} {
+const templateCSS = `.%{componentName} {
   /* Make your magic! */
   display: flex;
 }\n`
