@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 
 import Button from '@clv/components/button'
 
-export default function Home(): NextPage {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -25,3 +25,5 @@ export default function Home(): NextPage {
     </div>
   )
 }
+
+export default Home
