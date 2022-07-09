@@ -6,7 +6,8 @@
   "bin": {
     "clv-components": "node bin/generate-component.js"
   },
-  "devDependencies": {
-    "@testing-library/react": "13.3.0"
+  "peerDependencies": {
+    "react-dom": "^18",
+    "react": "^18"
   }
 }

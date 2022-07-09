@@ -34,13 +34,5 @@
     "eslint-config-next": "12.2.0",
     "prettier": "2.7.1",
     "typescript": "4.7.4"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "react",
-        "react-dom"
-      ]
-    }
   }
 }
