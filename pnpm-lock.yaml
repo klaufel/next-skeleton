@@ -4,24 +4,13 @@ importers:
 
   .:
     specifiers:
-      '@clv/components': workspace:*
-      '@clv/literals': workspace:*
       '@types/node': 18.0.3
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
       eslint: 8.19.0
       eslint-config-next: 12.2.0
-      next: 12.2.0
       prettier: 2.7.1
-      react: 18.2.0
-      react-dom: 18.2.0
       typescript: 4.7.4
-    dependencies:
-      '@clv/components': link:components
-      '@clv/literals': link:literals
-      next: 12.2.0_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
     devDependencies:
       '@types/node': 18.0.3
       '@types/react': 18.0.15
@@ -30,6 +19,25 @@ importers:
       eslint-config-next: 12.2.0_4x5o4skxv6sl53vpwefgt23khm
       prettier: 2.7.1
       typescript: 4.7.4
+
+  app:
+    specifiers:
+      '@clv/components': workspace:*
+      '@clv/literals': workspace:*
+      next: 12.2.0
+      next-compose-plugins: 2.2.1
+      next-transpile-modules: 9.0.0
+      react: 18.2.0
+      react-dom: 18.2.0
+    dependencies:
+      '@clv/components': link:../components
+      '@clv/literals': link:../literals
+      next: 12.2.0_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      next-compose-plugins: 2.2.1
+      next-transpile-modules: 9.0.0
 
   components:
     specifiers: {}
@@ -918,6 +926,14 @@ packages:
       once: 1.4.0
     dev: true
 
+  /enhanced-resolve/5.10.0:
+    resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      graceful-fs: 4.2.10
+      tapable: 2.2.1
+    dev: true
+
   /enquirer/2.3.6:
     resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
     engines: {node: '>=8.6'}
@@ -967,6 +983,11 @@ packages:
       is-callable: 1.2.4
       is-date-object: 1.0.5
       is-symbol: 1.0.4
+    dev: true
+
+  /escalade/3.1.1:
+    resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
+    engines: {node: '>=6'}
     dev: true
 
   /escape-string-regexp/1.0.5:
@@ -1987,6 +2008,17 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
+  /next-compose-plugins/2.2.1:
+    resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
+    dev: true
+
+  /next-transpile-modules/9.0.0:
+    resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
+    dependencies:
+      enhanced-resolve: 5.10.0
+      escalade: 3.1.1
+    dev: true
+
   /next/12.2.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-B4j7D3SHYopLYx6/Ark0fenwIar9tEaZZFAaxmKjgcMMexhVJzB3jt7X+6wcdXPPMeUD6r09weUtnDpjox/vIA==}
     engines: {node: '>=12.22.0'}
@@ -2559,6 +2591,11 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /tapable/2.2.1:
+    resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
+    engines: {node: '>=6'}
     dev: true
 
   /text-table/0.2.0:
