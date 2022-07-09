@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "bin": {
-    "clv-literals": "node bin/literals-check.js"
+    "clv-literals": "bin/literals-check.js"
   },
   "scripts": {
     "literals:check": "node bin/literals-check.js"

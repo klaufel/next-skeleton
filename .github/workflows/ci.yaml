@@ -47,7 +47,7 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
       - name: Test literals
-        run: pnpm run test:literals
+        run: pnpm run literals:check
 
       - name: Generate build
         run: pnpm build
