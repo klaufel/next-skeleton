@@ -2,7 +2,7 @@
   background: #1d212a;
   border-radius: 8px;
   border: 0;
-  box-shadow: 0 6px 12px rgba(0,0,0,.12);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
   color: #fff;
   cursor: pointer;
   font-size: 16px;

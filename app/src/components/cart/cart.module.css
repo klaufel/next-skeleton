@@ -1,0 +1,20 @@
+.wrapper {
+  display: block;
+  margin-top: 32px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.container {
+  display: block;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  color: #b3bbc8;
+  font-size: 18px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}

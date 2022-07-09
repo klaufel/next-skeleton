@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Button from '@clv/components/button'
 import Card from '@clv/components/card'
 
+import Cart from '../../components/cart'
+
 type ProductsType = {
   icon: string
   name: string
@@ -65,6 +67,8 @@ export default function ContainerHome({ products }: ContainerHomeProps) {
         </main>
         <aside className={styles.aside}>
           <span className={styles.subtitle}>
+            {!isLogged && 'Hey! You have a discount if you log in'}
+            <br />
             {!isLogged ? '🚀 Login' : `👋 Welcome ${userName}!`}
           </span>
           <br />
@@ -72,24 +76,7 @@ export default function ContainerHome({ products }: ContainerHomeProps) {
             {!isLogged ? 'Click to login!' : 'Logout'}
           </Button>
           <br /> <br />
-          <div className={styles.cart}>
-            {cart?.map(({ icon, name, price }) => (
-              <div key={name}>
-                {icon} {name} - {price} €
-              </div>
-            ))}
-            <br />
-            {!!cart.length && (
-              <>
-                Total:{' '}
-                {cart.reduce(
-                  (prev: number, { price }: ProductsType): number =>
-                    prev + price,
-                  0
-                )}{' '}
-              </>
-            )}
-          </div>
+          <Cart cart={cart} hasPriceReduction={Boolean(isLogged)} />
         </aside>
       </div>
     </>
