@@ -6,6 +6,9 @@
   "bin": {
     "clv-components": "bin/generate-component.js"
   },
+  "scripts": {
+    "components:generate": "node bin/generate-component.js"
+  },
   "peerDependencies": {
     "react-dom": "^18",
     "react": "^18"

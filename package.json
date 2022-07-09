@@ -14,8 +14,8 @@
     "dev": "cd app && pnpm run dev",
     "build": "cd app && pnpm run build",
     "start": "cd app && pnpm run start",
-    "components:generate": "clv-components generate",
-    "literals:check": "clv-literals check",
+    "components:generate": "cd components && components:generate",
+    "literals:check": "cd literals && pnpm run literals:check",
     "phoenix": "pnpm -r exec -- pnpm dlx rimraf node_modules && pnpm dlx rimraf node_modules pnpm-lock.yaml && pnpm install"
   },
   "devDependencies": {
