@@ -2,10 +2,6 @@
   "name": "next-skeleton",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=16",
-    "pnpm": ">=7"
-  },
   "workspaces": [
     "components",
     "literals"

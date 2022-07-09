@@ -1,0 +1,44 @@
+.wrapper {
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(0,0,0,.08);
+}
+
+
+.image {
+  background: #eee;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 80px;
+}
+
+.content {
+  padding: 16px;
+  display: flex;
+}
+
+.name {
+  font-size: 18px;
+  margin: 0;
+}
+
+.price {
+  color: #b3bbc8;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  flex: 1 auto;
+  justify-content: space-between;
+}

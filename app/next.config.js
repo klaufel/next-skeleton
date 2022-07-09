@@ -5,6 +5,12 @@ const withTM = require('next-transpile-modules')([
 ])
 
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   dir: './src',
   reactStrictMode: true,
 }

@@ -1,14 +1,14 @@
 import styles from './button.module.css'
 
-type ButtonProps = {
+interface ButtonProps {
   children: React.ReactNode
-  href: string
+  onClick?: any
 }
 
-export default function Button({ children, href, ...props }: ButtonProps) {
+export default function Button({ children, onClick, ...props }: ButtonProps) {
   return (
-    <a className={styles.button} href={href} {...props}>
+    <button className={styles.button} onClick={onClick} {...props}>
       {children} →
-    </a>
+    </button>
   )
 }
