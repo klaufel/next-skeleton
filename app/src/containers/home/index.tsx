@@ -35,6 +35,14 @@ export default function ContainerHome({ products }: ContainerHomeProps) {
       : dispatch({ type: 'LOGOUT' })
   }
 
+  const handleClickCardButton = (isBuyable: boolean, item: ProductsType) => {
+    isBuyable
+      ? setCart((prevState) => [...prevState, item])
+      : setCart((prevState) =>
+          prevState.filter(({ name }) => name !== item.name)
+        )
+  }
+
   return (
     <>
       <Head>
@@ -49,20 +57,24 @@ export default function ContainerHome({ products }: ContainerHomeProps) {
         <main className={styles.main}>
           <h1 className={styles.title}>Fruits market</h1>
           <section className={styles.grid}>
-            {products.map(({ icon, name, price }) => (
-              <Card
-                icon={icon}
-                key={name}
-                name={name}
-                price={price}
-                onClick={() =>
-                  setCart((prevState) => {
-                    return [...prevState, { name, icon, price }]
-                  })
-                }
-                hasPriceReduction={Boolean(isLogged)}
-              />
-            ))}
+            {products.map(({ icon, name, price }) => {
+              const isBuyable = !Boolean(
+                cart.find((item) => item.name === name)
+              )
+              return (
+                <Card
+                  icon={icon}
+                  key={name}
+                  name={name}
+                  price={price}
+                  isBuyable={isBuyable}
+                  onClick={() =>
+                    handleClickCardButton(isBuyable, { name, icon, price })
+                  }
+                  hasPriceReduction={Boolean(isLogged)}
+                />
+              )
+            })}
           </section>
         </main>
         <aside className={styles.aside}>

@@ -3,19 +3,21 @@ import styles from './card.module.css'
 import Button from '../button'
 
 interface CardProps {
+  hasPriceReduction?: boolean
   icon: string
+  isBuyable?: boolean
   name: string
   onClick?: any
   price: number
-  hasPriceReduction?: boolean
 }
 
 export default function Card({
+  hasPriceReduction = false,
   icon,
+  isBuyable = true,
   name,
   onClick,
   price,
-  hasPriceReduction = false,
   ...props
 }: CardProps) {
   return (
@@ -30,7 +32,9 @@ export default function Card({
             hasPriceReduction ? price / 2 : price
           } €`}</span>
         </div>
-        <Button onClick={onClick}>Add to cart</Button>
+        <Button onClick={onClick} design={isBuyable ? 'primary' : 'secondary'}>
+          {isBuyable ? 'Add to cart' : 'Remove'}
+        </Button>
       </div>
     </div>
   )

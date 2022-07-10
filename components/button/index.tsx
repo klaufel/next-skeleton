@@ -1,13 +1,27 @@
+import cx from 'classnames'
 import styles from './button.module.css'
 
 interface ButtonProps {
   children: React.ReactNode
+  design?: 'primary' | 'secondary'
   onClick?: any
 }
 
-export default function Button({ children, onClick, ...props }: ButtonProps) {
+export default function Button({
+  children,
+  design = 'primary',
+  onClick,
+  ...props
+}: ButtonProps) {
   return (
-    <button className={styles.button} onClick={onClick} {...props}>
+    <button
+      className={cx(
+        styles.button,
+        design === 'secondary' && styles['button--secondary']
+      )}
+      onClick={onClick}
+      {...props}
+    >
       {children} →
     </button>
   )
