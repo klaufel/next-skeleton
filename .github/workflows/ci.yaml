@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 16
 
-      if: github.event_name == 'pull_request'
       - uses: actions/github-script@v5
+        if: github.event_name == 'pull_request'
         with:
           script: |
             const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
