@@ -29,7 +29,7 @@ jobs:
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
-              repo: context.repo.repo,github.event.pull_request.head.ref
+              repo: context.repo.repo,
               body: `
                 <strong>🚀 Deploy this branch on stage environment.</strong> View more info for <a href="https://github.com/${{ github.repository }}/actions">deploy actions ↗︎</a><br/>
                 Current branch: ${{ github.event.pull_request.head.ref }}<br/>
