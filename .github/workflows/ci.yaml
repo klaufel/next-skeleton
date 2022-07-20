@@ -24,7 +24,7 @@ jobs:
         with:
           script: |
             const giphy = require('giphy-api')();
-            const image = await giphy.search({q: pokemon, limit: 2, rating: 'g', fmt: 'json'})
+            const image = await giphy.search({q: 'pokemon', limit: 2, rating: 'g', fmt: 'json'})
 
             console.log(image)
             github.rest.issues.createComment({
