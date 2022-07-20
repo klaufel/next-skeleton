@@ -15,11 +15,15 @@ jobs:
       - uses: actions/github-script@v5
         with:
           script: |
+            const giphy = require('giphy-api')();
+            const image = await giphy.search({q: pokemon, limit: 2, rating: 'g', fmt: 'json'})
+
+            console.log(image)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 <a href="https://github.com/${{github.repository}}/actions/runs/ci">Run stage</a> Thanks for reporting!'
+              body: `👋 <a href="https://github.com/${{github.repository}}/actions/runs/ci">Run stage</a> Thanks for reporting! ${image.toString()}`
             })
 
       - name: Install `Node.js`
