@@ -22,14 +22,14 @@ jobs:
         with:
           script: |
             const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
-              return `<a href="https://github.com/${{github.repository}}/actions/runs/ci?stage${stage}">stage-${stage}</a><br/>`
+              return `<li><a href="https://github.com/${{github.repository}}/actions/runs/ci?stage${stage}">stage-${stage}</a></li>`
             }).join('')
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀 Deploy this branch on stage:<br/><br/>${stages}<br/>`
+              body: `<strong>🚀 Deploy this branch on stage.</strong> View more info for <a href="https://github.com/${{github.repository}}/actions">deploy actions ↗︎</a><br/><br/><ul>${stages}</ul><br/>`
             })
 
       - name: Install `pnpm`
