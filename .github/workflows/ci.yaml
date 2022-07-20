@@ -35,7 +35,7 @@ jobs:
                 `View more info for [https://github.com/${{ github.repository }}/actions](deploy actions ↗︎)`,
                 stages,
                 `Current branch: [${{ github.server_url }}/${{ github.repository }}/tree/${{ github.event.pull_request.head.ref }}](${{ github.event.pull_request.head.ref }})`,
-              ].join('')
+              ].join('\n')
             })
 
       - name: Install `pnpm`
