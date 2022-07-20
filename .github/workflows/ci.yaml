@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
-              return `<li><a href="https://github.com/${{ github.repository }}/actions/runs/ci?stage${stage}">Deploy on stage-${stage}</a> - <a href="https://stage${stage}-marketplace.blommarket.com/">View live site</a></li>`
+              return `<li><a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/ci?stage${stage}">Deploy on stage-${stage}</a> - <a href="https://stage${stage}-marketplace.blommarket.com/">View live site</a></li>`
             }).join('')
 
             github.rest.issues.createComment({
@@ -33,7 +33,7 @@ jobs:
               body: [
                 `<strong>🚀 Deploy this branch on stage environment.</strong> View more info for <a href="https://github.com/${{ github.repository }}/actions">deploy actions ↗︎</a>`,
                 `<ul>${stages}</ul>`,
-                `Current branch: <a href="${{ github.repository }}/tree/${{ github.event.pull_request.head.ref }}">${{ github.event.pull_request.head.ref }}</a>`,
+                `Current branch: <a href="${{ github.server_url }}/${{ github.repository }}/tree/${{ github.event.pull_request.head.ref }}">${{ github.event.pull_request.head.ref }}</a>`,
               ].join('<br/>')
             })
 
