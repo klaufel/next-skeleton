@@ -18,8 +18,9 @@ jobs:
         with:
           node-version: 16
 
+      - run: npm install giphy-api
+
       - uses: actions/github-script@v5
-        run: npm install giphy-api
         with:
           script: |
             const giphy = require('giphy-api')();
