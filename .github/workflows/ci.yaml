@@ -31,10 +31,11 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: [
-                `<strong>🚀 Deploy this branch on stage environment.</strong> View more info for <a href="https://github.com/${{ github.repository }}/actions">deploy actions ↗︎</a>`,
+                `<h3>🚀 Deploy this branch on stage environment.</h3>`,
+                `View more info for <a href="https://github.com/${{ github.repository }}/actions">deploy actions ↗︎</a>`,
                 `<ul>${stages}</ul>`,
                 `Current branch: <a href="${{ github.server_url }}/${{ github.repository }}/tree/${{ github.event.pull_request.head.ref }}">${{ github.event.pull_request.head.ref }}</a>`,
-              ].join('<br/>')
+              ].join('')
             })
 
       - name: Install `pnpm`
