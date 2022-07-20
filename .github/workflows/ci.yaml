@@ -21,8 +21,7 @@ jobs:
       - uses: actions/github-script@v5
         with:
           script: |
-            const stages = [...Array(4).keys()].map(n => n + 1)
-            const stages = stages.map(stage => {
+            const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
               return `<a href="https://github.com/${{github.repository}}/actions/runs/ci?stage${stage}">stage-${stage}</a><br/>`
             }).join('')
 
