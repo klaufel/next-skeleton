@@ -27,9 +27,9 @@ jobs:
           script: |
             const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
               return [
-                `stage-${stage}`,
+                `| stage-${stage}`,
                 'ok',
-                `[View live site](https://stage${stage}-marketplace.blommarket.com/)`
+                `[View live site](https://stage${stage}-marketplace.blommarket.com/)`,
                 `[Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
               ].join(' | ')
             }).join('\n').concat('\n')
