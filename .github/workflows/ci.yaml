@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  GITHUB_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+  GITHUB_REPOSITORY_URL: '${{ github.server_url }}/${{ github.repository }}'
 
 jobs:
   build:
