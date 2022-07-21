@@ -21,12 +21,6 @@ jobs:
         with:
           node-version: 16
 
-      - name: Set up stage status env
-        run: echo "STAGE_STATUS=$(curl -IL https://stage1-marketplace.blommarket.com/)" >> $GITHUB_ENV
-
-      - name: Use stage status env
-        run: echo ${{ env.STAGE_STATUS }}
-
       - uses: actions/github-script@v5
         if: github.event_name == 'pull_request'
         with:
@@ -35,7 +29,7 @@ jobs:
             const stages = stagesNumber.map(stage => {
               return [
                 `| stage-${stage}`,
-                '${{ env.STAGE_STATUS }}',
+                '✅ Active',
                 `[View live site](https://stage${stage}-marketplace.blommarket.com/)`,
                 `[Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
               ].join(' | ')
