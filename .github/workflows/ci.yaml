@@ -26,8 +26,19 @@ jobs:
         with:
           script: |
             const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
-              return `- [Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage}) - [View live site](https://stage${stage}-marketplace.blommarket.com/)`
+              return [
+                `stage-${stage}`,
+                'ok',
+                `[View live site](https://stage${stage}-marketplace.blommarket.com/)`
+                `[Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
+              ].join(' | ')
             }).join('\n').concat('\n')
+
+            const stageTable = [
+              '| Stage | Status | Preview | Updated |',
+              '| :- | :- | :- | :- |'
+              ...stages,
+            ].join('\n')
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -36,7 +47,7 @@ jobs:
               body: [
                 '### 🚀 Deploy this branch on stage environment',
                 'View more info for [deploy actions ↗︎](${{ env.GITHUB_REPOSITORY_URL }}/actions)',
-                stages,
+                stageTable,
                 'Current branch: [${{ github.event.pull_request.head.ref }}](${{ env.GITHUB_REPOSITORY_URL }}/tree/${{ github.event.pull_request.head.ref }})',
               ].join('\n')
             })
