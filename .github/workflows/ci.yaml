@@ -36,7 +36,7 @@ jobs:
             })
 
             const stageTable = [
-              '| Stage | Status | Preview | Deploy |',
+              '| Name | Status | Preview | Deploy |',
               '| :- | :- | :- | :- |',
                stages.join('\n').concat('\n'),
             ].join('\n')
