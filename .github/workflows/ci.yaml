@@ -21,14 +21,10 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm install node-fetch
-
       - uses: actions/github-script@v5
         if: github.event_name == 'pull_request'
         with:
           script: |
-            import fetch from 'node-fetch'
-
             async function getSiteHealth(stage = 1) {
               try {
                 const {status} = await fetch(`https://stage${stage}-marketplace.blommarket.com/`);
