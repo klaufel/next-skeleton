@@ -35,7 +35,7 @@ jobs:
             const stages = stagesNumber.map(stage => {
               return [
                 `| stage-${stage}`,
-                ${{ env.STAGE_STATUS }},
+                '${{ env.STAGE_STATUS }}',
                 `[View live site](https://stage${stage}-marketplace.blommarket.com/)`,
                 `[Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
               ].join(' | ')
