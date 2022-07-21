@@ -22,7 +22,7 @@ jobs:
           node-version: 16
 
       - name: Set up stage status env
-        run: echo "STAGE_STATUS=$(echo curl -IL https://stage1-marketplace.blommarket.com/)" >> $GITHUB_ENV
+        run: echo "STAGE_STATUS=$(curl -IL https://stage1-marketplace.blommarket.com/)" >> $GITHUB_ENV
 
       - name: Use stage status env
         run: echo ${{ env.STAGE_STATUS }}
