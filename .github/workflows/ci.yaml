@@ -21,34 +21,25 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm install node-fetch
+      - name: 'Get stages status'
+        id: stages-status
+        run: |
+          status = $(curl -IL https://stage1-marketplace.blommarket.com/ | grep "^HTTP\/")
+          echo "status from curl= $status"
 
       - uses: actions/github-script@v5
         if: github.event_name == 'pull_request'
         with:
           script: |
-            const fetch = require('node-fetch')
-
-            async function getSiteHealth(stage = 1) {
-              try {
-                const {status} = await fetch(`https://stage${stage}-marketplace.blommarket.com/`);
-                return status
-              } catch (err) {
-                console.log(err);
-              }
-            }
-
             const stagesNumber = [...Array(4).keys()].map(n => n + 1)
-            const stages = await Promise.all(stagesNumber.map(async (stage) => {
-
-              const stageHealt = getSiteHealth(stage)
+            const stages = stagesNumber.map(stage => {
               return [
                 `| stage-${stage}`,
-                stageHealt,
+                ${{ steps.stages-status}},
                 `[View live site](https://stage${stage}-marketplace.blommarket.com/)`,
                 `[Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
               ].join(' | ')
-            }))
+            })
 
             const stageTable = [
               '| Stage | Status | Preview | Updated |',
