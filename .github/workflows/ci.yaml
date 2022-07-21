@@ -36,8 +36,8 @@ jobs:
 
             const stageTable = [
               '| Stage | Status | Preview | Updated |',
-              '| :- | :- | :- | :- |'
-              ...stages,
+              '| :- | :- | :- | :- |',
+               stages,
             ].join('\n')
 
             github.rest.issues.createComment({
