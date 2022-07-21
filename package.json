@@ -2,6 +2,7 @@
   "name": "next-skeleton",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "workspaces": [
     "components",
     "domain",
