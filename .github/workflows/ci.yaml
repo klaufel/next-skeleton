@@ -35,8 +35,8 @@ jobs:
               repo: context.repo.repo,
               body: [
                 '### 🚀 Deploy this branch on stage environment',
-                'View more info for (${{ env.GITHUB_REPOSITORY_URL }}/actions)[deploy actions ↗︎]',
-                'Current branch: (${{ env.GITHUB_REPOSITORY_URL }}/tree/${{ github.event.pull_request.head.ref }})[${{ github.event.pull_request.head.ref }}]',
+                'View more info for [deploy actions ↗︎](${{ env.GITHUB_REPOSITORY_URL }}/actions)',
+                'Current branch: [${{ github.event.pull_request.head.ref }}](${{ env.GITHUB_REPOSITORY_URL }}/tree/${{ github.event.pull_request.head.ref }})',
               ].join('\n')
             })
 
