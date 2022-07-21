@@ -26,7 +26,7 @@ jobs:
         with:
           script: |
             const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
-              return `- (${{ GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})[Deploy on stage-${stage}] - (https://stage${stage}-marketplace.blommarket.com/)[View live site]`
+              return `- (${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})[Deploy on stage-${stage}] - (https://stage${stage}-marketplace.blommarket.com/)[View live site]`
             }).join('\n')
 
             github.rest.issues.createComment({
