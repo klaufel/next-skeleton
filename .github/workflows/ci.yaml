@@ -25,19 +25,31 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           script: |
-            const stages = [...Array(4).keys()].map(n => n + 1).map(stage => {
+            async function getSiteHealth(stage = 1) {
+              try {
+                const {status} = await fetch(`https://stage${stage}-marketplace.blommarket.com/`);
+                return status
+              } catch (err) {
+                console.log(err);
+              }
+            }
+
+            const stagesNumber = [...Array(4).keys()].map(n => n + 1)
+            const stages = await Promise.all(stagesNumber.map(async (stage) => {
+
+              const stageHealt = getSiteHealth(stage)
               return [
                 `| stage-${stage}`,
-                'ok',
+                stageHealt,
                 `[View live site](https://stage${stage}-marketplace.blommarket.com/)`,
                 `[Deploy on stage-${stage}](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
               ].join(' | ')
-            }).join('\n').concat('\n')
+            }))
 
             const stageTable = [
               '| Stage | Status | Preview | Updated |',
               '| :- | :- | :- | :- |',
-               stages,
+               stages.join('\n').concat('\n'),
             ].join('\n')
 
             github.rest.issues.createComment({
