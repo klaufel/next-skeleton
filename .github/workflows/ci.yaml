@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 16
 
-      run: npm install node-fetch
+      - run: npm install node-fetch
 
       - uses: actions/github-script@v5
         if: github.event_name == 'pull_request'
