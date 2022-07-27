@@ -14,7 +14,7 @@ on:
           - https://stage4-marketplace.blommarket.com/
 
 jobs:
-  run:
+  test-e2e:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
