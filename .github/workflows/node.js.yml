@@ -1,0 +1,55 @@
+name: Run test e2e
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        type: choice
+        description: Url to run test e2e
+        default: 'https://stage1-marketplace.blommarket.com/'
+        options:
+          - https://stage1-marketplace.blommarket.com/
+          - https://stage2-marketplace.blommarket.com/
+          - https://stage3-marketplace.blommarket.com/
+          - https://stage4-marketplace.blommarket.com/
+
+jobs:
+  run:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install `Node.js`
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install `pnpm`
+        uses: pnpm/action-setup@v2.0.1
+        id: pnpm-install
+        with:
+          version: 7.5
+          run_install: false
+
+      - name: Get `pnpm` store directory
+        id: pnpm-cache
+        run: echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup `pnpm` cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+
+      - name: Cypress install and run
+        uses: cypress-io/github-action@v4
+        with:
+          install: false
+          working-directory: test-e2e
+          command: pnpm run build
+        env:
+          BASE_URL: ${{ github.event.inputs.url }}
