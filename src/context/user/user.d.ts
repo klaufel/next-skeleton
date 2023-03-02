@@ -11,6 +11,7 @@ export interface UserContextDispatcher {
 
 export interface UserContextProviderProps {
   children: React.ReactNode
+  initialState?: UserContextStateType
 }
 
 export type UserContextType = {

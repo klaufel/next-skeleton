@@ -1,6 +1,5 @@
 import { createContext, useState, useReducer } from 'react'
 
-let state, setState
 import type {
   UserContextStateType,
   UserContextProviderProps,
@@ -16,12 +15,12 @@ const UserContext = createContext<UserContextType | null>(null)
 
 function UserContextProvider({
   children,
-  initialState,
+  initialState: initialStateProps,
 }: UserContextProviderProps) {
-  const [state, setState] = useState(initialState)
+  const [state, setState] = useState(initialStateProps || initialState)
 
-  const handleLogin = ({ userName, userId }: UserContextStateType) => {
-    setState((prevState: UserContextStateType) => ({
+  const handleLogin = ({ userName, userId }: UserContextStateType): void => {
+    setState((prevState) => ({
       ...prevState,
       isLogged: true,
       userName,
@@ -29,7 +28,11 @@ function UserContextProvider({
     }))
   }
 
-  const value = { state, handleLogin }
+  const handleLogout = (): void => {
+    setState(initialState)
+  }
+
+  const value = { state, handleLogin, handleLogout }
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

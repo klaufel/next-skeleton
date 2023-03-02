@@ -26,7 +26,7 @@ export const getStaticProps = async () => {
     { icon: '🥥', name: 'Coconut', price: 22 },
   ]
 
-  const intitialState = { isLogged: true, userName: 'jc', userId: 'l123123' }
+  const intitialState = {}
 
   return { props: { products, intitialState } }
 }
