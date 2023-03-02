@@ -1,15 +1,22 @@
 {
-  "name": "next-skeleton",
+  "name": "@next-skeleton/app",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "pnpm --filter @next-skeleton/app dev",
-    "build": "pnpm --filter @next-skeleton/app build",
-    "start": "pnpm --filter @next-skeleton/app start",
+    "dev": "NODE_ENV=development next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "components:generate": "pnpm --filter @next-skeleton/literals components:generate",
     "literals:check": "pnpm --filter @next-skeleton/literals literals:check",
     "phoenix": "pnpm -r exec -- pnpm dlx rimraf node_modules && pnpm dlx rimraf node_modules pnpm-lock.yaml && pnpm install"
+  },
+  "dependencies": {
+    "@next-skeleton/components": "workspace:*",
+    "@next-skeleton/literals": "workspace:*",
+    "next": "13.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.14.4",
