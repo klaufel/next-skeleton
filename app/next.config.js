@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const withTM = require('next-transpile-modules')([
-  '@next-skeleton/components',
-  '@next-skeleton/literals',
-])
 
 const nextConfig = {
   eslint: {
@@ -11,8 +7,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  dir: './src',
+  transpilePackages: ['@next-skeleton/components', '@next-skeleton/literals'],
   reactStrictMode: true,
+  swcMinify: true,
 }
 
-module.exports = withTM(nextConfig)
+module.exports = nextConfig

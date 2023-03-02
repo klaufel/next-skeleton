@@ -25,8 +25,6 @@ importers:
       '@next-skeleton/components': workspace:*
       '@next-skeleton/literals': workspace:*
       next: 13.2.3
-      next-compose-plugins: 2.2.1
-      next-transpile-modules: 10.0.0
       react: 18.2.0
       react-dom: 18.2.0
     dependencies:
@@ -35,9 +33,6 @@ importers:
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    devDependencies:
-      next-compose-plugins: 2.2.1
-      next-transpile-modules: 10.0.0
 
   packages/components:
     specifiers:
@@ -2213,16 +2208,6 @@ packages:
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
-    dev: true
-
-  /next-compose-plugins/2.2.1:
-    resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
-    dev: true
-
-  /next-transpile-modules/10.0.0:
-    resolution: {integrity: sha512-FyeJ++Lm2Fq31gbThiRCrJlYpIY9QaI7A3TjuhQLzOix8ChQrvn5ny4MhfIthS5cy6+uK1AhDRvxVdW17y3Xdw==}
-    dependencies:
-      enhanced-resolve: 5.12.0
     dev: true
 
   /next/13.2.3_biqbaboplfbrettd7655fr4n2y:
