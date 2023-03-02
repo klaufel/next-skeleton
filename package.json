@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "components",
-    "domain",
-    "literals"
-  ],
   "scripts": {
     "dev": "pnpm --filter @clv/app dev",
     "build": "pnpm --filter @clv/app build",

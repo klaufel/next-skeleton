@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@clv/components": "workspace:*",
-    "@clv/domain": "workspace:*",
     "@clv/literals": "workspace:*",
     "next": "12.2.0",
     "react": "18.2.0",
