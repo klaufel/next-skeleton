@@ -2,16 +2,13 @@
   "name": "next-skeleton",
   "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "components",
-    "literals"
-  ],
+  "type": "module",
   "scripts": {
-    "dev": "cd app && pnpm run dev",
-    "build": "cd app && pnpm run build",
-    "start": "cd app && pnpm run start",
-    "components:generate": "cd components && components:generate",
-    "literals:check": "cd literals && pnpm run literals:check",
+    "dev": "pnpm --filter @clv/app dev",
+    "build": "pnpm --filter @clv/app build",
+    "start": "pnpm --filter @clv/app start",
+    "components:generate": "pnpm --filter @clv/literals components:generate",
+    "literals:check": "pnpm --filter @clv/literals literals:check",
     "phoenix": "pnpm -r exec -- pnpm dlx rimraf node_modules && pnpm dlx rimraf node_modules pnpm-lock.yaml && pnpm install"
   },
   "devDependencies": {

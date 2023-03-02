@@ -18,21 +18,16 @@ export interface ContainerHomeProps {
 }
 
 export default function ContainerHome({ products }: ContainerHomeProps) {
-  const { state, dispatch } = useUser() ?? {}
+  const { state, handleLogin } = useUser() ?? {}
   const { isLogged, userName } = state ?? {}
 
   const [cart, setCart] = useState<ProductsType[] | []>([])
 
   const handleClickLogin = () => {
-    !isLogged
-      ? dispatch({
-          type: 'LOGIN',
-          payload: {
-            userName: 'Jane Doe',
-            userId: '7a3fe58c-82c0-4c56-9ef4-e5cd7e9a6733',
-          },
-        })
-      : dispatch({ type: 'LOGOUT' })
+    handleLogin({
+      userName: 'Jane Doe',
+      userId: '7a3fe58c-82c0-4c56-9ef4-e5cd7e9a6733',
+    })
   }
 
   const handleClickCardButton = (isBuyable: boolean, item: ProductsType) => {
