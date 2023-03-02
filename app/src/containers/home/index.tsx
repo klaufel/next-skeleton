@@ -2,8 +2,8 @@ import Head from 'next/head'
 import styles from './home.module.css'
 import useUser from '../../context/user/hooks/useUser'
 import { useState } from 'react'
-import Button from '@clv/components/button'
-import Card from '@clv/components/card'
+import Button from '@next-skeleton/components/button'
+import Card from '@next-skeleton/components/card'
 
 import Cart from '../../components/cart'
 

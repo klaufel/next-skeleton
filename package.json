@@ -4,20 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter @clv/app dev",
-    "build": "pnpm --filter @clv/app build",
-    "start": "pnpm --filter @clv/app start",
-    "components:generate": "pnpm --filter @clv/literals components:generate",
-    "literals:check": "pnpm --filter @clv/literals literals:check",
+    "dev": "pnpm --filter @next-skeleton/app dev",
+    "build": "pnpm --filter @next-skeleton/app build",
+    "start": "pnpm --filter @next-skeleton/app start",
+    "components:generate": "pnpm --filter @next-skeleton/literals components:generate",
+    "literals:check": "pnpm --filter @next-skeleton/literals literals:check",
     "phoenix": "pnpm -r exec -- pnpm dlx rimraf node_modules && pnpm dlx rimraf node_modules pnpm-lock.yaml && pnpm install"
   },
   "devDependencies": {
-    "@types/node": "18.0.3",
-    "@types/react": "18.0.15",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0",
-    "prettier": "2.7.1",
-    "typescript": "4.7.4"
+    "@types/node": "18.14.4",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.35.0",
+    "eslint-config-next": "13.2.3",
+    "prettier": "2.8.4",
+    "typescript": "4.9.5"
   }
 }

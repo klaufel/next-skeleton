@@ -1,5 +1,3 @@
 packages:
   - 'app'
-  - 'components/**'
-  - 'literals'
-  - 'test-e2e'
+  - 'packages/**'

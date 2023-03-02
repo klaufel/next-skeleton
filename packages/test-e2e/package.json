@@ -1,5 +1,5 @@
 {
-  "name": "@clv/test-e2e",
+  "name": "@next-skeleton/test-e2e",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -8,6 +8,6 @@
     "test:e2e:ci": "pnpm cypress run --config video=false"
   },
   "devDependencies": {
-    "cypress": "10.3.0"
+    "cypress": "12.7.0"
   }
 }

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const withTM = require('next-transpile-modules')([
-  '@clv/components',
-  '@clv/literals',
+  '@next-skeleton/components',
+  '@next-skeleton/literals',
 ])
 
 const nextConfig = {

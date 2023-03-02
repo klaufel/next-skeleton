@@ -1,9 +1,9 @@
 {
-  "name": "@clv/literals",
+  "name": "@next-skeleton/literals",
   "version": "0.1.0",
   "private": true,
   "bin": {
-    "clv-literals": "bin/literals-check.js"
+    "next-skeleton-literals": "bin/literals-check.js"
   },
   "scripts": {
     "literals:check": "node bin/literals-check.js"
