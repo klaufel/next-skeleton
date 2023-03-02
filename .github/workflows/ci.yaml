@@ -82,7 +82,7 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
       - name: Test literals
-        run: cd literals && pnpm run literals:check
+        run: pnpm run literals:check
 
       - name: Generate build
-        run: cd app && pnpm run build
+        run: pnpm run build
