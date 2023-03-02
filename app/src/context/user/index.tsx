@@ -1,8 +1,8 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useState, useReducer } from 'react'
 
+let state, setState
 import type {
   UserContextStateType,
-  UserContextDispatcher,
   UserContextProviderProps,
   UserContextType,
 } from './user.d'
@@ -14,27 +14,22 @@ const initialState: UserContextStateType = {
 }
 const UserContext = createContext<UserContextType | null>(null)
 
-const reducer = (
-  state: UserContextStateType,
-  { type, payload }: UserContextDispatcher
-) => {
-  switch (type) {
-    case 'LOGIN':
-      return {
-        isLogged: true,
-        userName: payload.userName,
-        userId: payload.userId,
-      }
-    case 'LOGOUT':
-      return initialState
-    default:
-      return state
-  }
-}
+function UserContextProvider({
+  children,
+  initialState,
+}: UserContextProviderProps) {
+  const [state, setState] = useState(initialState)
 
-function UserContextProvider({ children }: UserContextProviderProps) {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const value = { state, dispatch }
+  const handleLogin = ({ userName, userId }: UserContextStateType) => {
+    setState((prevState: UserContextStateType) => ({
+      ...prevState,
+      isLogged: true,
+      userName,
+      userId,
+    }))
+  }
+
+  const value = { state, handleLogin }
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

@@ -8,5 +8,7 @@ export default function Home({ products }: ContainerHomeProps) {
 export const getStaticProps = async () => {
   const products = await domain['get_product_use_case']().execute()
 
-  return { props: { products } }
+  const intitialState = { isLogged: true, userName: 'jc', userId: 'l123123' }
+
+  return { props: { products, intitialState } }
 }
