@@ -1,4 +1,4 @@
-name: 'CI'
+name: CI
 
 on:
   push:
@@ -6,80 +6,35 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  GITHUB_REPOSITORY_URL: '${{ github.server_url }}/${{ github.repository }}'
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  ci:
+    name: Continuous integration
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Git checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install `pnpm`
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.21
 
       - name: Install `Node.js`
         uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - uses: actions/github-script@v5
-        if: github.event_name == 'pull_request'
-        with:
-          script: |
-            const stagesNumber = [...Array(4).keys()].map(n => n + 1)
-            const stages = stagesNumber.map(stage => {
-              return [
-                `| **stage-${stage}**`,
-                '✅ Active',
-                `[View live site](https://stage${stage}-marketplace.blommarket.com/)`,
-                `[Deploy branch on stage-${stage} →](${{ env.GITHUB_REPOSITORY_URL }}/actions/runs/ci?stage${stage})`,
-              ].join(' | ')
-            })
-
-            const stageTable = [
-              '| Name | Status | Preview | Deploy |',
-              '| :- | :- | :- | :- |',
-               stages.join('\n').concat('\n'),
-            ].join('\n')
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: [
-                '### 🚀 Deploy this branch on stage environment',
-                'View more info for [deploy actions ↗︎](${{ env.GITHUB_REPOSITORY_URL }}/actions)',
-                stageTable,
-                '📦 Current branch: [${{ github.event.pull_request.head.ref }}](${{ env.GITHUB_REPOSITORY_URL }}/tree/${{ github.event.pull_request.head.ref }})',
-              ].join('\n')
-            })
-
-      - name: Install `pnpm`
-        uses: pnpm/action-setup@v2.0.1
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get `pnpm` store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - name: Setup `pnpm` cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-            ${{ github.workspace }}/.next/cache
-          key: |
-            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+        run: pnpm install
+
+      - name: Validation of types
+        run: pnpm run ts:check
 
       - name: Test literals
         run: pnpm run literals:check
